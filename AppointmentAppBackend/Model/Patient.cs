@@ -19,6 +19,6 @@ namespace AppointmentAppBackend.Model
         public string? Bloodgroup { get; set; }
         public string? Address { get; set; }
 
-        //public ICollection<Appointment>? Appointments { get; set; } = null!;
+        public ICollection<Appointment>? Appointments { get; set; } = null!;
     }
 }

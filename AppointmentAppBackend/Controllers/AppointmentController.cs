@@ -15,7 +15,14 @@ namespace AppointmentAppBackend.Controllers
         public AppointmentController(ApplicationDbContext context) => _context = context;
 
         [HttpGet]
-        public async Task<IEnumerable<Appointment>> Get() => await _context.Appointments.ToListAsync();
+        public async Task<IEnumerable<Appointment>> Get(){ 
+            var app= await _context.Appointments.ToListAsync();
+            foreach (Appointment appointment in app)
+            {
+                Console.WriteLine(appointment.AppointmentId);
+            }
+            return app;
+        }
 
         [HttpGet("id")]
         public async Task<IActionResult> GetById(int id)
