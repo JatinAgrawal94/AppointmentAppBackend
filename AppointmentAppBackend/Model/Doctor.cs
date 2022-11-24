@@ -2,24 +2,27 @@
 
 namespace AppointmentAppBackend.Model
 {
-    public class Patient
+    public class Doctor
     {
         [Key]
-        public int PatientId { get; set; }
+        public int DoctorId { get; set; }
         [Required]
-        public string? PatientName { get; set; }
+        public string? DoctorName { get; set; }
         [Required]
-        public string? PatientEmail { get; set; }
+        public string DoctorEmail { get; set; }
         [Required]
         public string? DateOfBirth { get; set; }
         [Required]
         public string? Gender { get; set; }
         [Required]
         public int Contact { get; set; }
+        [Required]
         public string? Bloodgroup { get; set; }
-        public string? Address { get; set; }    
+        [Required]
+        public string? Designation { get; set; }
+        [Required]
+        public string? Timings { get; set; }
+        public string? Address { get; set; }
 
-
-        public ICollection<Appointment>? Appointments { get; set; } = null!;
     }
 }

@@ -17,10 +17,10 @@ namespace AppointmentAppBackend.Controllers
         [HttpGet]
         public async Task<IEnumerable<Appointment>> Get(){ 
             var app= await _context.Appointments.ToListAsync();
-            foreach (Appointment appointment in app)
+            /*foreach (Appointment appointment in app)
             {
                 Console.WriteLine(appointment.AppointmentId);
-            }
+            }*/
             return app;
         }
 

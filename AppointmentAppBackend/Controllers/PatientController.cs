@@ -39,5 +39,27 @@ namespace AppointmentAppBackend.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
+
+        [HttpGet("id/appointments")]
+        public async Task<IActionResult> getAppointments(int id)
+        {
+           var app = await _context.Appointments.ToListAsync();
+            List<Appointment> appointment = new List<Appointment>();
+            // we have patient id we just need to loop throught appointment table for that id
+            foreach(Appointment a in app)
+            {
+                if (a.PatientId == id)
+                {
+                    appointment.Add(a);
+                }
+            }
+            List<Patient> jatin = new List<Patient>();
+            //jatin.AddRange(appointment);
+            return appointment == null ? NotFound() : Ok(appointment);
+            //return (IActionResult)appointment;
+        }
+
+       
+
     }
 }
