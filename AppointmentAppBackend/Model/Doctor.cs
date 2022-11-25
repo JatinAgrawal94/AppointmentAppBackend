@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
 namespace AppointmentAppBackend.Model
 {
     public class Doctor
@@ -9,7 +8,7 @@ namespace AppointmentAppBackend.Model
         [Required]
         public string? DoctorName { get; set; }
         [Required]
-        public string DoctorEmail { get; set; }
+        public string? DoctorEmail { get; set; }
         [Required]
         public string? DateOfBirth { get; set; }
         [Required]
@@ -23,6 +22,5 @@ namespace AppointmentAppBackend.Model
         [Required]
         public string? Timings { get; set; }
         public string? Address { get; set; }
-
     }
 }

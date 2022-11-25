@@ -53,10 +53,8 @@ namespace AppointmentAppBackend.Controllers
                     appointment.Add(a);
                 }
             }
-            List<Patient> jatin = new List<Patient>();
-            //jatin.AddRange(appointment);
+            List<Patient> jatin = new List<Patient>();            
             return appointment == null ? NotFound() : Ok(appointment);
-            //return (IActionResult)appointment;
         }
 
        
