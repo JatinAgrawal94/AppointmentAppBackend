@@ -33,6 +33,35 @@ namespace AppointmentAppBackend.Controllers
             return CreatedAtAction(nameof(GetById), new { id = profile.DoctorId }, profile);
         }
 
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> PutDoctor(int id, Doctor doctor)
+        {
+            if (id != doctor.DoctorId)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(doctor).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!doctorExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
         // delete a doctor
         [HttpDelete("id")]
         public async Task<IActionResult> DeleteDoctor(int id)
@@ -60,5 +89,10 @@ namespace AppointmentAppBackend.Controllers
             List<Patient> jatin = new List<Patient>();
             return appointment == null ? NotFound() : Ok(appointment);
         }*/
+
+        private bool doctorExists(int id)
+        {
+            return _context.Doctors.Any(e => e.DoctorId == id);
+        }
     }
 }

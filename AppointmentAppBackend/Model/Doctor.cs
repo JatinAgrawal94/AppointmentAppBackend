@@ -14,7 +14,7 @@ namespace AppointmentAppBackend.Model
         [Required]
         public string? Gender { get; set; }
         [Required]
-        public int Contact { get; set; }
+        public string Contact { get; set; }
         [Required]
         public string? Bloodgroup { get; set; }
         [Required]

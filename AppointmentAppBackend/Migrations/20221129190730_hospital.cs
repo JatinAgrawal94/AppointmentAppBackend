@@ -33,7 +33,7 @@ namespace AppointmentAppBackend.Migrations
                     DoctorEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfBirth = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Contact = table.Column<int>(type: "int", nullable: false),
+                    Contact = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Bloodgroup = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Designation = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Timings = table.Column<string>(type: "nvarchar(max)", nullable: false),
