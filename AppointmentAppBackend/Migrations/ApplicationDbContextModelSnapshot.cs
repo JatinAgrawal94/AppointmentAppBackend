@@ -40,8 +40,6 @@ namespace AppointmentAppBackend.Migrations
 
                     b.HasKey("AppointmentId");
 
-                    b.HasIndex("PatientId");
-
                     b.ToTable("Appointments");
                 });
 
@@ -106,8 +104,9 @@ namespace AppointmentAppBackend.Migrations
                     b.Property<string>("Bloodgroup")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Contact")
-                        .HasColumnType("int");
+                    b.Property<string>("Contact")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DateOfBirth")
                         .IsRequired()
@@ -128,20 +127,6 @@ namespace AppointmentAppBackend.Migrations
                     b.HasKey("PatientId");
 
                     b.ToTable("Patients");
-                });
-
-            modelBuilder.Entity("AppointmentAppBackend.Model.Appointment", b =>
-                {
-                    b.HasOne("AppointmentAppBackend.Model.Patient", null)
-                        .WithMany("Appointments")
-                        .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AppointmentAppBackend.Model.Patient", b =>
-                {
-                    b.Navigation("Appointments");
                 });
 #pragma warning restore 612, 618
         }

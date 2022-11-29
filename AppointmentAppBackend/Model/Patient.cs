@@ -15,11 +15,8 @@ namespace AppointmentAppBackend.Model
         [Required]
         public string? Gender { get; set; }
         [Required]
-        public int Contact { get; set; }
+        public string Contact { get; set; }
         public string? Bloodgroup { get; set; }
         public string? Address { get; set; }    
-
-
-        public ICollection<Appointment>? Appointments { get; set; } = null!;
     }
 }
