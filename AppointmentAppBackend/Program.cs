@@ -33,10 +33,10 @@ builder.Services.AddIdentity<HospitalUser, IdentityRole>(options =>
 {
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequiredLength = 8;
-}).AddEntityFrameworkStores<ApplicationDbContext>();
     
-
-
+}).AddRoles<IdentityRole>()
+  .AddEntityFrameworkStores<ApplicationDbContext>();
+    
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
