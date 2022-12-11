@@ -27,10 +27,11 @@ namespace AppointmentAppBackend.Controllers
             _roleManager = roleManager;
         }
 
-        [HttpPost]
+        [HttpPost("login")]
         public async Task<IActionResult> Login(LoginRequest loginRequest)
-        {
+        {   
             HospitalUser? user = await _userManager.FindByNameAsync(loginRequest.UserName);
+            
             if (user == null || !await _userManager.CheckPasswordAsync(user, loginRequest.Password))
             {
                 return Unauthorized(new LoginResponse
@@ -45,7 +46,7 @@ namespace AppointmentAppBackend.Controllers
             {
                 Success = true,
                 Message = "Login successful",
-                Token = jwt
+                Token = jwt,
             });
         }
 
@@ -80,8 +81,8 @@ namespace AppointmentAppBackend.Controllers
                 {
                     var newUser = new HospitalUser { UserName=registeruser.UserName };
                     IdentityResult result=await _userManager.CreateAsync(newUser, registeruser.Password);
-                    user=await _userManager.FindByNameAsync(registeruser.UserName);
-                    IdentityResult roles = await _userManager.AddToRoleAsync(user,role);
+                    //user=await _userManager.FindByNameAsync(registeruser.UserName);
+                   // IdentityResult roles = await _userManager.AddToRoleAsync(user,role);
                     if (result.Succeeded)
                     {
                         return Ok(new { 
@@ -96,7 +97,7 @@ namespace AppointmentAppBackend.Controllers
             }
                 return StatusCode(403);
         }
-
+/*
         [HttpPost("role/assignrole")]
         public async Task<IActionResult> AssignRole(String username,String role)
         {
@@ -119,6 +120,6 @@ namespace AppointmentAppBackend.Controllers
                     return BadRequest(new{ message=roles});
                 }
             }
-        }
+        }*/
     }
 }

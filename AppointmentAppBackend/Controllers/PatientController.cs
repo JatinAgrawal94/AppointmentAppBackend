@@ -21,7 +21,7 @@ namespace AppointmentAppBackend.Controllers
         [HttpGet("id")]
         public async Task<IActionResult> GetById(int id)
         {
-            var issue = await _context.Patients.FindAsync(id);
+           var issue = await _context.Patients.FindAsync(id);
             return issue == null ? NotFound() : Ok(issue);
         }
 
