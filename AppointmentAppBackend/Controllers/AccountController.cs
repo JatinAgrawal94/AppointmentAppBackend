@@ -50,7 +50,7 @@ namespace AppointmentAppBackend.Controllers
             });
         }
 
-        [HttpDelete("logout")]
+        [HttpDelete("delete")]
         public async Task<IActionResult> DeleteUser(String user) {
             try {
                 HospitalUser result=await _userManager.FindByNameAsync(user);
@@ -60,9 +60,9 @@ namespace AppointmentAppBackend.Controllers
                     return NotFound();
                 }else
                 {
-                    var roles= await _userManager.GetRolesAsync(result);
+                    //var roles= await _userManager.GetRolesAsync(result);
                     await _userManager.DeleteAsync(result);
-                    await _userManager.RemoveFromRolesAsync(result,roles);
+                   /* await _userManager.RemoveFromRolesAsync(result,roles);*/
                     Console.WriteLine(result.UserName);
                     return Ok("Deleted");
                 }
@@ -72,7 +72,7 @@ namespace AppointmentAppBackend.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> Register(RegisterUser registeruser,String role) 
+        public async Task<IActionResult> Register(RegisterUser registeruser) 
         {
             HospitalUser user=await _userManager.FindByNameAsync(registeruser.UserName);
             if(user==null)

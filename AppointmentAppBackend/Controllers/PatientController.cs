@@ -5,17 +5,20 @@ using Microsoft.EntityFrameworkCore;
 using AppointmentAppBackend.Model;
 using System.Diagnostics.Metrics;
 using System.Diagnostics.Eventing.Reader;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AppointmentAppBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PatientController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
         public PatientController(ApplicationDbContext context) => _context = context;
 
         [HttpGet]
+        
         public async Task<IEnumerable<Patient>> Get() => await _context.Patients.ToListAsync();
 
         [HttpGet("id")]
