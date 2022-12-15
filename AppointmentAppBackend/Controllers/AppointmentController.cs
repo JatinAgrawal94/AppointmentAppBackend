@@ -4,11 +4,13 @@ using AppointmentAppBackend.Data;
 using AppointmentAppBackend.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AppointmentAppBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AppointmentController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
